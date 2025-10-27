@@ -9,8 +9,12 @@ public class StringProblems{
     // endsLy("y") → false
     // endsLy("oddy") → false
     public boolean endsLy(String x){
-            //implement code here
-
+        if (x.length()>1) {
+            String ending = x.substring(x.length() - 2);
+            if (ending.equals("ly")) {
+                  return true;  
+                }
+        }    
         return false;
     }
 
@@ -22,8 +26,16 @@ public class StringProblems{
     // conCat("dog", "cat") → "dogcat"
     // conCat("abc", "") → "abc"
     public String conCat(String s1, String s2){
-     
-        return "";
+        if (s1.isEmpty()){
+            return s2;
+        }
+        if(s2.isEmpty()){
+            return s1;
+        }
+        if (s1.charAt(s1.length() - 1) == s2.charAt(0)) {
+            return s1.concat(s2.substring(1));    
+        }
+        return s1.concat(s2);
     }
 
     // Given a string, return a version without the first 2 chars. 
@@ -38,10 +50,11 @@ public class StringProblems{
     //deFront("a") -> "a"
     //deFront("ba") -> ""
     public String deFront(String s1){
-           
-        return "";
+           if (s1.charAt(0) == 'a') {
+                return s1;
+           }
+        return s1.substring(2);
     }
-
     
     // Given a string, if the first or last chars are 'x', 
     // return the string without those 'x' chars, and otherwise 
@@ -51,6 +64,9 @@ public class StringProblems{
     // withoutX("Hxix") → "Hxi"
     // withoutX("") → ""
     public String withoutX(String s1){
+        if (s1.contains("x")) {
+            return s1.substring(0, s1.indexOf("x"));         
+        }
         return "";
     }
 
