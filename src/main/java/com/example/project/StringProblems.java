@@ -73,15 +73,20 @@ public class StringProblems{
     // withoutX("xHi") → "Hi"
     // withoutX("Hxix") → "Hxi"
     // withoutX("") → ""
-    public String withoutX(String s1){
-        while(s1.contains("x")){
-        if (s1.contains("x")) {
-            return s1.replace("x","");         
-        }
-        }
-        return s1;
-    }
+    public String withoutX(String s1) {
 
+        StringBuilder result = new StringBuilder(s1);
+
+        if (result.charAt(0) == 'x') {
+            result.deleteCharAt(0);
+        }
+
+        if (result.length() > 0 && result.charAt(result.length() - 1) == 'x') {
+            result.deleteCharAt(result.length() - 1);
+        }
+
+        return result.toString();
+    }
     // Given a string str, if the string starts with "f" return "Fizz".
     //  If the string ends with "b" return "Buzz". If both the "f" and "b" 
     //  conditions are true, return "FizzBuzz". In all other cases, return the 
