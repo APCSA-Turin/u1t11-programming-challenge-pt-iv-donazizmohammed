@@ -49,13 +49,23 @@ public class StringProblems{
     //deFront("ab") -> "ab"
     //deFront("a") -> "a"
     //deFront("ba") -> ""
-    public String deFront(String s1){
-           if (s1.charAt(0) == 'a') {
-                return s1;
-           }
-        return s1.substring(2);
+    public String deFront(String s1) {
+    String result = "";
+
+    if (s1.length() >= 1 && s1.charAt(0) == 'a') {
+        result += s1.charAt(0);
     }
-    
+
+    if (s1.length() >= 2 && s1.charAt(1) == 'b') {
+        result += s1.charAt(1);
+    }
+
+    if (s1.length() > 2) {
+        result += s1.substring(2);
+    }
+
+    return result;
+}
     // Given a string, if the first or last chars are 'x', 
     // return the string without those 'x' chars, and otherwise 
     // return the string unchanged.
@@ -64,10 +74,12 @@ public class StringProblems{
     // withoutX("Hxix") → "Hxi"
     // withoutX("") → ""
     public String withoutX(String s1){
+        while(s1.contains("x")){
         if (s1.contains("x")) {
-            return s1.substring(0, s1.indexOf("x"));         
+            return s1.replace("x","");         
         }
-        return "";
+        }
+        return s1;
     }
 
     // Given a string str, if the string starts with "f" return "Fizz".
@@ -78,7 +90,18 @@ public class StringProblems{
     // fizzString("dib") → "Buzz"
     // fizzString("fib") → "FizzBuzz"
     public String fizzString(String s1){
-        return "";
+        if (s1.startsWith("f") && s1.endsWith("b")) {
+            return "FizzBuzz";
+        } else {
+            if (s1.startsWith("f")) {
+                return "Fizz";
+            }
+            if (s1.endsWith("b")) {
+                return "Buzz";
+            }
+            return s1;
+        }
+
     }
 
     // Given an int n, return the string form of the number followed 
@@ -91,6 +114,16 @@ public class StringProblems{
     // fizzString2(2) → "2!"
     // fizzString2(3) → "Fizz!"
     public String fizzString2(int x){
-        return "";
-    }
+        if ((x % 3 == 0) && (x % 5 == 0)) {
+            return "FizzBuzz!";
+        } else {
+        if (x % 3 == 0) {
+            return "Fizz!";
+        }
+        if (x % 5 == 0) {
+            return "Buzz!";
+        }
+            return x + "!";
+        }
+}
 }
